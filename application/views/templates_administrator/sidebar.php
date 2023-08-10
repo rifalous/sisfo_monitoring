@@ -34,9 +34,9 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sub-Menu Monitoring:</h6>
             <a class="collapse-item" href="<?= base_url('administrator/siswa') ?>">Data Siswa</a>
-            <a class="collapse-item" href="<?= base_url('#') ?>">Agenda Kelas</a>
+            <a class="collapse-item" href="<?= base_url('administrator/agenda') ?>">Agenda Kelas</a>
             <a class="collapse-item" href="<?= base_url('#') ?>">Presensi Siswa</a>
-            <a class="collapse-item" href="<?= base_url('#') ?>">Laporan Siswa</a>
+            <a class="collapse-item" href="<?= base_url('administrator/laporan') ?>">Laporan Siswa</a>
             <!-- <a class="collapse-item" href="<?= base_url('administrator/mahasiswa') ?>">Mahasiswa</a>
             <a class="collapse-item" href="<?= base_url('administrator/jurusan') ?>">Jurusan</a>
             <a class="collapse-item" href="<?= base_url('administrator/prodi') ?>">Program Studi</a>
@@ -61,6 +61,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sub-Menu Pengaturan:</h6>
             <a class="collapse-item" href="<?= base_url('administrator/users') ?>">User</a>
+            <a class="collapse-item" href="<?= base_url('administrator/matapelajaran') ?>">Mata Pelajaran</a>
             <!-- <a class="collapse-item" href="utilities-border.html">Menu</a> -->
           </div>
         </div>

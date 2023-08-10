@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="alert alert-success" role="alert">
+    <i class="fas fa-university"></i> Form Update Agenda Kelas
+  </div>
+
+  <?php foreach($agenda as $agd): ?>
+  <form action="<?= base_url('administrator/agenda/update_aksi') ?>" method="post">
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="">Tanggal</label>
+          <input type="hidden" name="id" value="<?= $agd->id; ?>">
+          <input type="date" name="tanggal" class="form-control" value="<?= $agd->tanggal; ?>">
+          <?= form_error('tanggal', '<div class="text-danger small">', '</div>'); ?>
+        </div>
+        <div class="form-group">
+          <label for="">Mata Pelajaran</label>
+          <select name="matapelajaran" id="" class="form-control">
+            <!-- <option value="">--Pilih Mata Pelajaran--</option> -->
+            <option value="<?= $agd->id_matapelajaran; ?>"><?= $agd->matapelajaran; ?></option>
+            <?php foreach($matapelajaran as $mp): ?>
+            <option value="<?= $mp->id ?>"><?= $mp->nama_matapelajaran; ?></option>
+            <?php endforeach; ?>
+          </select>
+          <?= form_error('nama_jurusan', '<div class="text-danger small">', '</div>'); ?>
+        </div>
+        <div class="form-group">
+          <label for="">Materi Pembahasan</label>
+          <input type="text" name="materi_pembahasan" placeholder="Masukkan Materi Pembahasan" class="form-control" value="<?= $agd->materi_pembahasan; ?>">
+          <?= form_error('materi_pembahasan', '<div class="text-danger small">', '</div>'); ?>
+        </div>
+        <div class="form-group">
+          <label for="">Kelas</label>
+          <select name="kelas" id="" class="form-control">
+            <!-- <option value="">--Pilih Kelas--</option> -->
+            <option value="<?= $agd->id_kelas; ?>"><?= $agd->kelas; ?></option>
+            <?php foreach($kelas as $kls): ?>
+            <option value="<?= $kls->id ?>"><?= $kls->nama_kelas; ?></option>
+            <?php endforeach; ?>
+          </select>
+          <?= form_error('kelas', '<div class="text-danger small">', '</div>'); ?>
+        </div>
+        <div class="form-group">
+          <label for="">Pengajar</label>
+          <select name="pengajar" id="" class="form-control">
+            <!-- <option value="">--Pilih Pengajar--</option> -->
+            <option value="<?= $agd->id_user; ?>"><?= $agd->pengajar; ?></option>
+            <?php foreach($pengajar as $pjr): ?>
+            <option value="<?= $pjr->id ?>"><?= $pjr->nama_pengajar; ?></option>
+            <?php endforeach; ?>
+          </select>
+          <?= form_error('pengajar', '<div class="text-danger small">', '</div>'); ?>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Simpan</button>
+
+      </div>
+    </div>
+
+  </form>
+  <?php endforeach; ?>
+</div>

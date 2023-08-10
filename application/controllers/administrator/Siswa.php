@@ -4,7 +4,6 @@ class Siswa extends CI_Controller{
 
   public function index(){
     $data['siswa'] = $this->siswa_model->tampil_data('siswa')->result();
-    // $data['kelas'] = $this->prodi_model->tampil_data('kelas')->result();
     $this->load->view('templates_administrator/header');
     $this->load->view('templates_administrator/sidebar');
     $this->load->view('administrator/siswa', $data);
@@ -20,10 +19,10 @@ class Siswa extends CI_Controller{
   }
 
   public function tambah_siswa(){
-    // $data['prodi'] = $this->siswa_model->tampil_data('prodi')->result();
+    $data['kelas'] = $this->siswa_model->tampil_data('kelas')->result();
     $this->load->view('templates_administrator/header');
     $this->load->view('templates_administrator/sidebar');
-    $this->load->view('administrator/siswa_form');
+    $this->load->view('administrator/siswa_form', $data);
     $this->load->view('templates_administrator/footer');
   }
 
@@ -88,7 +87,7 @@ class Siswa extends CI_Controller{
     $where = array('id' => $id);
 
     $data['siswa'] = $this->db->query("SELECT * FROM siswa sw WHERE sw.id='$id'")->result();
-    // $data['prodi']     = $this->siswa_model->tampil_data('prodi')->result();
+    $data['kelas'] = $this->siswa_model->tampil_data('kelas')->result();
     $data['detail']    = $this->siswa_model->ambil_id_siswa($id);
     $this->load->view('templates_administrator/header');
     $this->load->view('templates_administrator/sidebar');

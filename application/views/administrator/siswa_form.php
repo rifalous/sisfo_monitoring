@@ -20,7 +20,12 @@
         </div>
         <div class="form-group">
           <label for="">Kelas</label>
-          <input type="text" name="kelas" class="form-control">
+          <select name="kelas" id="" class="form-control">
+            <option value="">--Pilih Kelas--</option>
+            <?php foreach($kelas as $kls): ?>
+              <option value="<?= $kls->nama_kelas	; ?>"><?= $kls->nama_kelas	; ?></option>
+            <?php endforeach; ?>
+          </select>
           <?= form_error('kelas', '<div class="text-danger small">', '</div>'); ?>
         </div>
         <div class="form-group">

@@ -68,7 +68,7 @@ class Users extends CI_Controller{
   public function update_aksi(){
     $id         = $this->input->post('id');
     $username   = $this->input->post('username');
-    $password   = $this->input->post('password');
+    $password   = md5($this->input->post('password', TRUE));
     $email      = $this->input->post('email');
     $level      = $this->input->post('level');
     $blokir     = $this->input->post('blokir');

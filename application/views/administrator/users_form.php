@@ -27,28 +27,28 @@
             <?php
             if($level == 'admin'){ ?>
             <option value="admin" selected>Admin</option>
-            <option value="guru">Guru</option>
+            <option value="pengajar">Pengajar</option>
             <option value="orangtua">Orangtua</option>
             <?php
             }
             elseif($level == 'orangtua'){ ?>
 
             <option value="admin">Admin</option>
-            <option value="guru">Guru</option>
+            <option value="pengajar">Pengajar</option>
             <option value="orangtua">Orangtua</option>
             <?php
             }
-            elseif($level == 'guru'){ ?>
+            elseif($level == 'pengajar'){ ?>
 
             <option value="admin">Admin</option>
-            <option value="guru">Guru</option>
+            <option value="pengajar">Pengajar</option>
             <option value="orangtua">Orangtua</option>
             <?php
             }
             else{ ?>
 
             <option value="admin">Admin</option>
-            <option value="guru">Guru</option>
+            <option value="pengajar">Pengajar</option>
             <option value="orangtua">Orangtua</option>
             <?php } ?>
 

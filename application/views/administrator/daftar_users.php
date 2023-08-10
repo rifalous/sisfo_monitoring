@@ -5,7 +5,8 @@
 
   <?= $this->session->flashdata('pesan'); ?>
 
-  <?= anchor('administrator/users/tambah_users', '<button class="btn btn-primary btn-sm mb-2"><i class="fas fa-plus fa-sm"></i> Tambah Users</button>') ?>
+  <a class="btn btn-primary btn-sm mb-2" href="<?php echo base_url('administrator/users/tambah_users') ?>"><i class="fas fa-plus fa-sm"></i>  Tambah Users</a>
+  
 
   <table class="table table-borderd table-hover table-striped">
     <tr>

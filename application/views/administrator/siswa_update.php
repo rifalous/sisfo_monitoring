@@ -9,8 +9,8 @@
     <div class="row">
       <div class="col-md-6">
 
-        <div class="form-group">
-          <label for="">Nomor Siswa</label>
+        <div class="form-group" hidden>
+          <label for="">ID Siswa</label>
           <input type="hidden" name="id" value="<?= $sw->id; ?>">
           <input type="text" name="nim" class="form-control" value="<?= $sw->id; ?>">
           <?= form_error('nim', '<div class="text-danger small">', '</div>'); ?>
@@ -21,10 +21,14 @@
           <?= form_error('nama_lengkap', '<div class="text-danger small">', '</div>'); ?>
         </div>
         <div class="form-group">
-          <label for="">Kelas</label>
-          <input type="text" name="kelas" class="form-control" value="<?= $sw->kelas; ?>">
-          <?= form_error('kelas', '<div class="text-danger small">', '</div>'); ?>
-        </div>
+            <label for="">Kelas</label>
+            <select name="kelas" id="" class="form-control">
+              <option><?= $sw->kelas; ?></option>
+              <?php foreach($kelas as $kls): ?>
+                <option value="<?= $kls->nama_kelas	; ?>"><?= $kls->nama_kelas	; ?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
         <div class="form-group">
           <label for="">Alamat</label>
           <input type="text" name="alamat" class="form-control" value="<?= $sw->alamat; ?>">

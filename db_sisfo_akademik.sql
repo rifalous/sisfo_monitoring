@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2020 at 02:41 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.1.24
+-- Generation Time: Aug 10, 2023 at 11:52 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -21,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `sisfo_akademik`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `agenda`
+--
+
+CREATE TABLE `agenda` (
+  `id` int(11) NOT NULL,
+  `tanggal` date NOT NULL,
+  `id_matapelajaran` int(10) NOT NULL,
+  `materi_pembahasan` varchar(256) NOT NULL,
+  `id_kelas` int(10) NOT NULL,
+  `id_user` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `agenda`
+--
+
+INSERT INTO `agenda` (`id`, `tanggal`, `id_matapelajaran`, `materi_pembahasan`, `id_kelas`, `id_user`) VALUES
+(1, '2023-08-12', 2, 'Bilangan Bulat, Bilangan Prima, Perpangkatan dan Faktorial', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -134,6 +155,29 @@ INSERT INTO `jurusan` (`id_jurusan`, `kode_jurusan`, `nama_jurusan`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `kelas`
+--
+
+CREATE TABLE `kelas` (
+  `id` int(11) NOT NULL,
+  `kode_kelas` varchar(20) NOT NULL,
+  `nama_kelas` varchar(25) NOT NULL,
+  `nama_jurusan` varchar(25) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kelas`
+--
+
+INSERT INTO `kelas` (`id`, `kode_kelas`, `nama_kelas`, `nama_jurusan`) VALUES
+(1, 'A1', 'Reguler A1', NULL),
+(2, 'A2', 'Reguler A2', NULL),
+(3, 'B1', 'Reguler B1', NULL),
+(4, 'B2', 'Reguler B2', NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `krs`
 --
 
@@ -222,6 +266,54 @@ INSERT INTO `matakuliah` (`kode_matakuliah`, `nama_matakuliah`, `sks`, `semester
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `matapelajaran`
+--
+
+CREATE TABLE `matapelajaran` (
+  `id` int(11) NOT NULL,
+  `kode_matapelajaran` varchar(10) NOT NULL,
+  `nama_matapelajaran` varchar(100) NOT NULL,
+  `kelas` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `matapelajaran`
+--
+
+INSERT INTO `matapelajaran` (`id`, `kode_matapelajaran`, `nama_matapelajaran`, `kelas`) VALUES
+(2, 'MTK', 'Matematika', 'Reguler A1'),
+(3, 'IND', 'Bahasa Indonesia', 'Reguler A1'),
+(4, 'ENG', 'Bahasa Inggris', 'Reguler A1'),
+(5, 'IPA', 'Ilmu Pengetahuan Alam', 'Reguler A1'),
+(6, 'IPS', 'Ilmu Pengetahuan Sosial', 'Reguler A1'),
+(7, 'PAI', 'Pendidikan Agama Islam', 'Reguler A1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengajar`
+--
+
+CREATE TABLE `pengajar` (
+  `id` int(11) NOT NULL,
+  `nama_pengajar` varchar(50) NOT NULL,
+  `alamat` varchar(50) NOT NULL,
+  `jenis_kelamin` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `telp` varchar(50) NOT NULL,
+  `photo` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pengajar`
+--
+
+INSERT INTO `pengajar` (`id`, `nama_pengajar`, `alamat`, `jenis_kelamin`, `email`, `telp`, `photo`) VALUES
+(1, 'Dedi Waluyo Wijoyo', 'Bekasi', 'Laki-laki', 'doniwaluyo@contoh.com', '0214565326', 'profil2.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `prodi`
 --
 
@@ -241,6 +333,32 @@ INSERT INTO `prodi` (`id_prodi`, `kode_prodi`, `nama_prodi`, `nama_jurusan`) VAL
 (3, 'AK', 'Akutansi', 'Ekonomi dan Bisinis'),
 (4, 'SI', 'Sastra Inggris', 'Komunikasi dan Bahasa'),
 (5, 'SI', 'Sistem Informasi', 'Ilmu Komputer');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `siswa`
+--
+
+CREATE TABLE `siswa` (
+  `id` int(11) NOT NULL,
+  `nama_lengkap` varchar(120) NOT NULL,
+  `kelas` varchar(11) NOT NULL,
+  `alamat` varchar(120) NOT NULL,
+  `email` varchar(120) NOT NULL,
+  `telepon` varchar(20) NOT NULL,
+  `tempat_lahir` varchar(120) NOT NULL,
+  `tanggal_lahir` date NOT NULL,
+  `jenis_kelamin` varchar(120) NOT NULL,
+  `photo` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `siswa`
+--
+
+INSERT INTO `siswa` (`id`, `nama_lengkap`, `kelas`, `alamat`, `email`, `telepon`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `photo`) VALUES
+(2, 'Rivaldy Fauzan', 'Reguler A1', 'Jl. Pajagalan 1 RT 01 / RW 12 No. 03, Desa Banjaran', 'rifalous@gmail.com', '081223651657', 'Banjaran', '2023-08-11', 'Laki-laki', '2.png');
 
 -- --------------------------------------------------------
 
@@ -319,7 +437,7 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `level` enum('admin','user') NOT NULL,
+  `level` enum('admin','pengajar','orangtua') NOT NULL,
   `blokir` enum('N','Y') NOT NULL,
   `id_session` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -330,11 +448,18 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `level`, `blokir`, `id_session`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@contoh.com', 'admin', 'N', ''),
-(3, 'putriutami', '81dc9bdb52d04dc20036dbd8313ed055', 'putri@contoh.com', 'admin', 'N', 'd41d8cd98f00b204e9800998ecf8427e');
+(3, 'azkiya', '7af1c8118ee8743c9a469567ba4a5bcc', 'azkiya@gmail.com', 'admin', 'N', 'd41d8cd98f00b204e9800998ecf8427e'),
+(4, 'waluyo', 'b46a80310335defd99bf108c6b5fea63', 'dedi_waluyo@gmail.com', 'pengajar', 'N', 'd41d8cd98f00b204e9800998ecf8427e');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `agenda`
+--
+ALTER TABLE `agenda`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `dosen`
@@ -367,6 +492,12 @@ ALTER TABLE `jurusan`
   ADD PRIMARY KEY (`id_jurusan`);
 
 --
+-- Indexes for table `kelas`
+--
+ALTER TABLE `kelas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `krs`
 --
 ALTER TABLE `krs`
@@ -379,10 +510,28 @@ ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `matapelajaran`
+--
+ALTER TABLE `matapelajaran`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pengajar`
+--
+ALTER TABLE `pengajar`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `prodi`
 --
 ALTER TABLE `prodi`
   ADD PRIMARY KEY (`id_prodi`);
+
+--
+-- Indexes for table `siswa`
+--
+ALTER TABLE `siswa`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tahun_akademik`
@@ -411,6 +560,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `agenda`
+--
+ALTER TABLE `agenda`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `dosen`
@@ -443,6 +598,12 @@ ALTER TABLE `jurusan`
   MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `kelas`
+--
+ALTER TABLE `kelas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `krs`
 --
 ALTER TABLE `krs`
@@ -455,10 +616,28 @@ ALTER TABLE `mahasiswa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `matapelajaran`
+--
+ALTER TABLE `matapelajaran`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `pengajar`
+--
+ALTER TABLE `pengajar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `prodi`
 --
 ALTER TABLE `prodi`
   MODIFY `id_prodi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `siswa`
+--
+ALTER TABLE `siswa`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tahun_akademik`
@@ -482,7 +661,7 @@ ALTER TABLE `transkrip_nilai`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

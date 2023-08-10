@@ -27,22 +27,32 @@
         <div class="form-group">
           <label for="">Level</label>
           <select name="level" id="" class="form-control">
-            <?php
+          <?php
             if($level == 'admin'){ ?>
             <option value="admin" selected>Admin</option>
-            <option value="mahasiswa">Mahasiswa</option>
+            <option value="pengajar">Pengajar</option>
+            <option value="orangtua">Orangtua</option>
             <?php
             }
-            elseif($level == 'mahasiswa'){ ?>
+            elseif($level == 'orangtua'){ ?>
 
             <option value="admin">Admin</option>
-            <option value="mahasiswa" selected>Mahasiswa</option>
+            <option value="pengajar">Pengajar</option>
+            <option value="orangtua" selected>Orangtua</option>
+            <?php
+            }
+            elseif($level == 'pengajar'){ ?>
+
+            <option value="admin">Admin</option>
+            <option value="pengajar" selected>Pengajar</option>
+            <option value="orangtua">Orangtua</option>
             <?php
             }
             else{ ?>
 
             <option value="admin">Admin</option>
-            <option value="mahasiswa">Mahasiswa</option>
+            <option value="pengajar">Pengajar</option>
+            <option value="orangtua">Orangtua</option>
             <?php } ?>
 
           </select>
