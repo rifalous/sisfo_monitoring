@@ -19,10 +19,10 @@ class Laporan extends CI_Controller{
     $data['presensi'] = $this->db->query(
       "SELECT siswa.nama_lengkap, siswa.kelas, presensi.* from siswa left join presensi ON siswa.id = presensi.id_siswa ORDER BY siswa.nama_lengkap ASC")
     ->result();
-    $this->load->view('templates_administrator/header');
-    $this->load->view('templates_administrator/sidebar');
-    $this->load->view('administrator/laporan', $data);
-    $this->load->view('templates_administrator/footer');
+    $this->load->view('templates_orangtua/header');
+    $this->load->view('templates_orangtua/sidebar');
+    $this->load->view('orangtua/laporan', $data);
+    $this->load->view('templates_orangtua/footer');
   }
 
   public function print(){
@@ -42,6 +42,6 @@ class Laporan extends CI_Controller{
     $data['presensi'] = $this->db->query(
       "SELECT siswa.nama_lengkap, siswa.kelas, presensi.* from siswa left join presensi ON siswa.id = presensi.id_siswa ORDER BY siswa.nama_lengkap ASC")
     ->result();
-    $this->load->view('administrator/print_laporan', $data);
+    $this->load->view('orangtua/print_laporan', $data);
   }
 }

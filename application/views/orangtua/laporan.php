@@ -5,7 +5,7 @@
 
   <?= $this->session->flashdata('pesan'); ?>
 
-  <a class="btn btn-info btn-sm mb-2" href="<?php echo base_url('administrator/laporan/print') ?>"><i class="fas fa-print fa-sm"></i>  Print Laporan</a>
+  <a class="btn btn-info btn-sm mb-2" href="<?php echo base_url('orangtua/laporan/print') ?>"><i class="fas fa-print fa-sm"></i>  Print Laporan</a>
 
   <table class="table table-striped table-bordered table-hover">
     <tr>

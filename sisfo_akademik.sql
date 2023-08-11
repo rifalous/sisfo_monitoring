@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 11, 2023 at 04:20 AM
+-- Generation Time: Aug 11, 2023 at 11:46 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -316,6 +316,55 @@ INSERT INTO `pengajar` (`id`, `nama_pengajar`, `alamat`, `jenis_kelamin`, `email
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `presensi`
+--
+
+CREATE TABLE `presensi` (
+  `id` int(11) NOT NULL,
+  `id_siswa` int(11) NOT NULL,
+  `id_kelas` int(11) NOT NULL,
+  `bulan` varchar(50) NOT NULL,
+  `tahun` varchar(50) NOT NULL,
+  `w1` int(11) NOT NULL,
+  `w2` int(11) NOT NULL,
+  `w3` int(11) NOT NULL,
+  `w4` int(11) NOT NULL,
+  `w5` int(11) NOT NULL,
+  `w6` int(11) NOT NULL,
+  `w7` int(11) NOT NULL,
+  `w8` int(11) NOT NULL,
+  `total_realisasi` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `presensi`
+--
+
+INSERT INTO `presensi` (`id`, `id_siswa`, `id_kelas`, `bulan`, `tahun`, `w1`, `w2`, `w3`, `w4`, `w5`, `w6`, `w7`, `w8`, `total_realisasi`) VALUES
+(22, 2, 1, 'Agustus', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(23, 3, 1, 'Agustus', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(24, 4, 1, 'Agustus', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(25, 5, 1, 'Agustus', '2023', 1, 1, 0, 0, 0, 0, 0, 0, '2'),
+(26, 6, 1, 'Agustus', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(27, 7, 1, 'Agustus', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(28, 8, 1, 'Agustus', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(29, 9, 1, 'Agustus', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(30, 10, 1, 'Agustus', '2023', 1, 1, 1, 1, 1, 1, 1, 1, '8'),
+(31, 11, 1, 'Agustus', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(32, 2, 1, 'September', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(33, 3, 1, 'September', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(34, 4, 1, 'September', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(35, 5, 1, 'September', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(36, 6, 1, 'September', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(37, 7, 1, 'September', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(38, 8, 1, 'September', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(39, 9, 1, 'September', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(40, 10, 1, 'September', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0'),
+(41, 11, 1, 'September', '2023', 0, 0, 0, 0, 0, 0, 0, 0, '0');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `prodi`
 --
 
@@ -450,6 +499,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `level` enum('admin','pengajar','orangtua') NOT NULL,
   `blokir` enum('N','Y') NOT NULL,
+  `id_child` int(11) DEFAULT NULL,
   `id_session` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -457,10 +507,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `level`, `blokir`, `id_session`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@contoh.com', 'admin', 'N', ''),
-(3, 'azkiya', '7af1c8118ee8743c9a469567ba4a5bcc', 'azkiya@gmail.com', 'admin', 'N', 'd41d8cd98f00b204e9800998ecf8427e'),
-(4, 'waluyo', 'b46a80310335defd99bf108c6b5fea63', 'dedi_waluyo@gmail.com', 'pengajar', 'N', 'd41d8cd98f00b204e9800998ecf8427e');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `level`, `blokir`, `id_child`, `id_session`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin@contoh.com', 'admin', 'N', 0, ''),
+(3, 'azkiya', '7af1c8118ee8743c9a469567ba4a5bcc', 'azkiya@gmail.com', 'admin', 'N', 0, 'd41d8cd98f00b204e9800998ecf8427e'),
+(4, 'waluyo', '0e8008f6f69308f53390e2ecd9ff659f', 'dedi_waluyo@gmail.com', 'pengajar', 'N', 0, 'd41d8cd98f00b204e9800998ecf8427e'),
+(5, 'budi', '00dfc53ee86af02e742515cdcf075ed3', 'budi@gmail.com', 'orangtua', 'N', 6, 'd41d8cd98f00b204e9800998ecf8427e');
 
 --
 -- Indexes for dumped tables
@@ -533,6 +584,12 @@ ALTER TABLE `pengajar`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `presensi`
+--
+ALTER TABLE `presensi`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `prodi`
 --
 ALTER TABLE `prodi`
@@ -576,7 +633,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `dosen`
@@ -639,6 +696,12 @@ ALTER TABLE `pengajar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `presensi`
+--
+ALTER TABLE `presensi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+
+--
 -- AUTO_INCREMENT for table `prodi`
 --
 ALTER TABLE `prodi`
@@ -672,7 +735,7 @@ ALTER TABLE `transkrip_nilai`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,11 +1,11 @@
 <div class="container-fluid">
   <div class="alert alert-success" role="alert">
-    <i class="fas fa-print"></i> Laporan Siswa
+    <i class="fas fa-university"></i> Agenda Kelas
   </div>
 
   <?= $this->session->flashdata('pesan'); ?>
-
-  <a class="btn btn-info btn-sm mb-2" href="<?php echo base_url('administrator/laporan/print') ?>"><i class="fas fa-print fa-sm"></i>  Print Laporan</a>
+  
+  <a class="btn btn-primary btn-sm mb-2" href="<?php echo base_url('orangtua/agenda/tambah_agenda') ?>"><i class="fas fa-plus fa-sm"></i>  Tambah Agenda</a>
 
   <table class="table table-striped table-bordered table-hover">
     <tr>
@@ -15,6 +15,7 @@
       <th>MATERI PEMBAHASAN</th>
       <th>KELAS</th>
       <th>PENGAJAR</th>
+      <th colspan="2">AKSI</th>
     </tr>
 
     <?php 
@@ -27,6 +28,8 @@
       <td><?= $agd->materi_pembahasan; ?></td>
       <td><?= $agd->kelas; ?></td>
       <td><?= $agd->pengajar; ?></td>
+      <td width="20px"><?= anchor('orangtua/agenda/update/'.$agd->id, '<div class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></div>') ?></td>
+      <td width="20px"><?= anchor('orangtua/agenda/delete/'.$agd->id, '<div onclick="return confirm(\'Yakin akan menghapus?\')" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></div>') ?></td>
     </tr>
     <?php endforeach; ?>
   </table>

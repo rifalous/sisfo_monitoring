@@ -7,7 +7,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('administrator/dashboard'); ?>">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('pengajar/dashboard'); ?>">
         <div class="sidebar-brand-icon">
           <i class="fas fa-university"></i>
         </div>
@@ -19,7 +19,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="<?= base_url('administrator/dashboard'); ?>">
+        <a class="nav-link" href="<?= base_url('pengajar/dashboard'); ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -33,26 +33,26 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sub-Menu Monitoring:</h6>
-            <a class="collapse-item" href="<?= base_url('administrator/siswa') ?>">Data Siswa</a>
-            <a class="collapse-item" href="<?= base_url('administrator/agenda') ?>">Agenda Kelas</a>
-            <a class="collapse-item" href="<?= base_url('administrator/presensi ') ?>">Presensi Siswa</a>
-            <a class="collapse-item" href="<?= base_url('administrator/laporan') ?>">Laporan Siswa</a>
-            <!-- <a class="collapse-item" href="<?= base_url('administrator/mahasiswa') ?>">Mahasiswa</a>
-            <a class="collapse-item" href="<?= base_url('administrator/jurusan') ?>">Jurusan</a>
-            <a class="collapse-item" href="<?= base_url('administrator/prodi') ?>">Program Studi</a>
-            <a class="collapse-item" href="<?= base_url('administrator/matakuliah') ?>">Mata Kuliah</a>
-            <a class="collapse-item" href="<?= base_url('administrator/tahun_akademik') ?>">Tahun Akademik</a>
-            <a class="collapse-item" href="<?= base_url('administrator/krs') ?>">KRS</a>
-            <a class="collapse-item" href="<?= base_url('administrator/nilai/input_nilai') ?>">Input Nilai</a>
-            <a class="collapse-item" href="<?= base_url('administrator/nilai') ?>">KHS</a>
-            <a class="collapse-item" href="<?= base_url('administrator/transkrip_nilai') ?>">Cetak Transkrip</a>
-            <a class="collapse-item" href="<?= base_url('administrator/dosen') ?>">Dosen</a> -->
+            <a class="collapse-item" href="<?= base_url('pengajar/siswa') ?>">Data Siswa</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/agenda') ?>">Agenda Kelas</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/presensi ') ?>">Presensi Siswa</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/laporan') ?>">Laporan Siswa</a>
+            <!-- <a class="collapse-item" href="<?= base_url('pengajar/mahasiswa') ?>">Mahasiswa</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/jurusan') ?>">Jurusan</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/prodi') ?>">Program Studi</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/matakuliah') ?>">Mata Kuliah</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/tahun_akademik') ?>">Tahun Akademik</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/krs') ?>">KRS</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/nilai/input_nilai') ?>">Input Nilai</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/nilai') ?>">KHS</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/transkrip_nilai') ?>">Cetak Transkrip</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/dosen') ?>">Dosen</a> -->
           </div>
         </div>
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
           <span>Pengaturan</span>
@@ -60,14 +60,14 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sub-Menu Pengaturan:</h6>
-            <a class="collapse-item" href="<?= base_url('administrator/users') ?>">User</a>
-            <a class="collapse-item" href="<?= base_url('administrator/kelas') ?>">Kelas</a>
-            <a class="collapse-item" href="<?= base_url('administrator/pengajar') ?>">Pengajar</a>
-            <a class="collapse-item" href="<?= base_url('administrator/matapelajaran') ?>">Mata Pelajaran</a>
-            <!-- <a class="collapse-item" href="utilities-border.html">Menu</a> -->
+            <a class="collapse-item" href="<?= base_url('pengajar/users') ?>">User</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/kelas') ?>">Kelas</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/pengajar') ?>">Pengajar</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/matapelajaran') ?>">Mata Pelajaran</a>
+            <a class="collapse-item" href="utilities-border.html">Menu</a>
           </div>
         </div>
-      </li>
+      </li> -->
 
       <!-- Nav Item - Pages Collapse Menu -->
       <!-- <li class="nav-item">
@@ -78,10 +78,10 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sub-Menu Info kampus:</h6>
-            <a class="collapse-item" href="<?= base_url('administrator/identitas') ?>">Identitas</a>
-            <a class="collapse-item" href="<?= base_url('administrator/hubungi_kami') ?>">Pesan User</a>
-            <a class="collapse-item" href="<?= base_url('administrator/informasi') ?>">Informasi kampus</a>
-            <a class="collapse-item" href="<?= base_url('administrator/tentang_kampus') ?>">Tentang kampus</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/identitas') ?>">Identitas</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/hubungi_kami') ?>">Pesan User</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/informasi') ?>">Informasi kampus</a>
+            <a class="collapse-item" href="<?= base_url('pengajar/tentang_kampus') ?>">Tentang kampus</a>
             <a class="collapse-item" href="blank.html">Fasilitas</a>
             <a class="collapse-item" href="blank.html">Materi Perkuliahan</a>
             <a class="collapse-item" href="blank.html">Galeri</a>
@@ -92,7 +92,7 @@
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="<?= base_url('administrator/auth/logout'); ?>" onclick="return confirm('Yakin akan logout?')">
+        <a class="nav-link" href="<?= base_url('pengajar/auth/logout'); ?>" onclick="return confirm('Yakin akan logout?')">
           <i class="fas fa-fw fa-sign-out-alt"></i>
           <span>Logout</span></a>
       </li>
@@ -286,7 +286,7 @@
                   Activity Log
                 </a> -->
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?= base_url('administrator/auth/logout'); ?>" onclick="return confirm('Yakin akan logout?')">
+                <a class="dropdown-item" href="<?= base_url('pengajar/auth/logout'); ?>" onclick="return confirm('Yakin akan logout?')">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>
