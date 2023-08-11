@@ -11,11 +11,17 @@ class Siswa extends CI_Controller{
   // }
 
   public function index(){
-    $id_anak = $this->session->userdata['id_child'];
-    $data['detail'] = $this->siswa_model->ambil_id_siswa($id_anak);
+    $dataUser = $this->user_model->ambil_data($this->session->userdata['username']);
+    $dataUser = array(
+      'username' => $dataUser->username,
+      'level'    => $dataUser->level,
+      'id_child' => $dataUser->id_child,
+    );
+    $id = $dataUser['id_child'];
+    $data['detail'] = $this->siswa_model->ambil_id_siswa($id);
     $this->load->view('templates_orangtua/header');
     $this->load->view('templates_orangtua/sidebar');
-    $this->load->view('orangtua/detail', $data, $id_anak);
+    $this->load->view('orangtua/siswa_detail', $data);
     $this->load->view('templates_orangtua/footer');
   }
 

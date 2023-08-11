@@ -60,7 +60,7 @@
 </style>
 	<center>
 		<div class="content-wrapper"> 
-			<strong style="font-size: 15px;">Laporan Siswa</strong>
+			<strong style="font-size: 15px;">Laporan Siswa <br>Realisasi Agenda Pembelajaran</strong>
 			<br>
 			
 		</div>
@@ -73,7 +73,7 @@
             <tr>
                 <th class="text-center"><span class="text-uppercase">No</span></th>
                 <th class="text-center"><span class="text-uppercase">Tanggal</span></th>
-                <th class="text-center">Mata Pembelajaran</th>
+                <th class="text-center">Mata Pelajaran</th>
                 <th class="text-center">Materi Pembahasan</th>
                 <th class="text-center">Kelas</th>
                 <th class="text-center">Pengajar</th>
@@ -95,18 +95,63 @@
 
             <?php endforeach; ?>
         </tbody>
-        <!-- <tfoot>
-            <tr>
-
-                <td class="text-right">111</td>
-                <td class="text-right">222</td>
-                <td class="text-right">333</td>
-                <td class="text-right">444</td>
-                <td class="text-right">555</td>
-                <td class="text-right">666</td>
-            </tr>
-        </tfoot> -->
     </table>
+
+	<hr>
+	
+
+
+	<?php
+        foreach ($detail as $pr) :
+    ?>
+	<h5>Realisasi Kehadiran Siswa</h5>
+	<h5>Nama Siswa : <?= $pr->nama_lengkap; ?><br>
+	Kelas : <?= $pr->kelas; ?></h5>
+	<?php endforeach; ?>
+	
+	<table class="custom-table">
+		<thead>
+			<tr>
+				<th class="text-center" rowspan="2">NO</th>
+				<th class="text-center" rowspan="2">NAMA</th>
+				<th class="text-center" rowspan="2">KELAS</th>
+				<th class="text-center" rowspan="2">BULAN</th>
+				<th class="text-center" colspan="8">KEHADIRAN PADA PERTEMUAN KE</th>
+				<th class="text-center" rowspan="2">TOTAL REALISASI KEHADIRAN</th>
+			</tr>
+			<tr>
+				<th>1</th>
+				<th>2</th>
+				<th>3</th>
+				<th>4</th>
+				<th>5</th>
+				<th>6</th>
+				<th>7</th>
+				<th>8</th>
+			</tr>
+		</thead>
+        <tbody>
+			<?php 
+			$no = 1;
+			foreach($presensi as $pr): ?>
+			<tr>
+			<td width="20px;"><?= $no++; ?></td>
+			<td><?= $pr->nama_lengkap; ?></td>
+			<td><?= $pr->kelas; ?></td>
+			<td><?= $pr->bulan; ?></td>
+			<td><?= $pr->w1; ?></td>
+			<td><?= $pr->w2; ?></td>
+			<td><?= $pr->w3; ?></td>
+			<td><?= $pr->w4; ?></td>
+			<td><?= $pr->w5; ?></td>
+			<td><?= $pr->w6; ?></td>
+			<td><?= $pr->w7; ?></td>
+			<td><?= $pr->w8; ?></td>
+			<td><?= $pr->total_realisasi ?></td>
+			</tr>
+			<?php endforeach; ?>
+		</tbody>
+  	</table>
     <script type="text/javascript">window.print();</script>
     <br>
 </body>

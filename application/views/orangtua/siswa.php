@@ -47,6 +47,6 @@
     <?php endforeach; ?>
   </table>
 
-  <?= anchor('orangtua/siswa', '<div class="btn btn-primary btn-sm mb-5">Kembali</div>') ?>
+  <a class="btn btn-primary btn-sm mb-2" href="<?php echo base_url('orangtua/dashboard') ?>">Kembali</a>
   
 </div>

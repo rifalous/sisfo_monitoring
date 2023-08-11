@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="alert alert-success" role="alert">
-    <i class="fas fa-eye"></i> Detail Siswa
+    <i class="fas fa-eye"></i> Data Siswa
   </div>
 
   <table class="table table-bordered table-hover table-striped">
@@ -47,6 +47,6 @@
     <?php endforeach; ?>
   </table>
 
-  <?= anchor('orangtua/siswa', '<div class="btn btn-primary btn-sm mb-5">Kembali</div>') ?>
+  <?= anchor('orangtua/dashboard', '<div class="btn btn-primary btn-sm mb-5">Kembali</div>') ?>
   
 </div>

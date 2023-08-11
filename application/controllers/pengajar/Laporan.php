@@ -26,6 +26,8 @@ class Laporan extends CI_Controller{
   }
 
   public function print(){
+    setlocale(LC_ALL, 'IND'); 
+    $bulan = strftime('%B');
     $data['agenda'] = $this->db->query(
         "SELECT agenda.id, 
             agenda.tanggal, 
@@ -39,8 +41,9 @@ class Laporan extends CI_Controller{
         AND agenda.id_kelas = kelas.id 
         AND agenda.id_user = pengajar.id")
     ->result();
+
     $data['presensi'] = $this->db->query(
-      "SELECT siswa.nama_lengkap, siswa.kelas, presensi.* from siswa left join presensi ON siswa.id = presensi.id_siswa ORDER BY siswa.nama_lengkap ASC")
+      "SELECT siswa.nama_lengkap, siswa.kelas, presensi.* from siswa left join presensi ON siswa.id = presensi.id_siswa WHERE presensi.bulan= '$bulan' ORDER BY siswa.nama_lengkap ASC")
     ->result();
     $this->load->view('pengajar/print_laporan', $data);
   }

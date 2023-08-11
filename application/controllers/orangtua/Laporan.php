@@ -39,8 +39,18 @@ class Laporan extends CI_Controller{
         AND agenda.id_kelas = kelas.id 
         AND agenda.id_user = pengajar.id")
     ->result();
+    $dataUser = $this->user_model->ambil_data($this->session->userdata['username']);
+    $dataUser = array(
+      'username' => $dataUser->username,
+      'level'    => $dataUser->level,
+      'id_child' => $dataUser->id_child,
+    );
+    $id = $dataUser['id_child'];
+    $data['detail'] = $this->db->query(
+      "SELECT siswa.nama_lengkap, siswa.kelas FROM siswa WHERE siswa.id='$id'")
+    ->result();
     $data['presensi'] = $this->db->query(
-      "SELECT siswa.nama_lengkap, siswa.kelas, presensi.* from siswa left join presensi ON siswa.id = presensi.id_siswa ORDER BY siswa.nama_lengkap ASC")
+      "SELECT siswa.nama_lengkap, siswa.kelas, presensi.* from siswa left join presensi ON siswa.id = presensi.id_siswa WHERE presensi.id_siswa = '$id'")
     ->result();
     $this->load->view('orangtua/print_laporan', $data);
   }

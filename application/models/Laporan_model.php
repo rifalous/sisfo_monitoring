@@ -20,3 +20,4 @@ class Agenda_model extends CI_Model{
     $this->db->delete($table);
   }
 }
+
