@@ -1,45 +1,42 @@
 <?php
 
-class Siswa extends CI_Controller{
+class pengajar extends CI_Controller{
 
   public function index(){
-    $data['siswa'] = $this->siswa_model->tampil_data('siswa')->result();
+    $data['pengajar'] = $this->pengajar_model->tampil_data('pengajar')->result();
     $this->load->view('templates_administrator/header');
     $this->load->view('templates_administrator/sidebar');
-    $this->load->view('administrator/siswa', $data);
+    $this->load->view('administrator/pengajar', $data);
     $this->load->view('templates_administrator/footer');
   }
 
   public function detail($id){
-    $data['detail'] = $this->siswa_model->ambil_id_siswa($id);
+    $data['detail'] = $this->pengajar_model->ambil_id_pengajar($id);
     $this->load->view('templates_administrator/header');
     $this->load->view('templates_administrator/sidebar');
-    $this->load->view('administrator/siswa_detail', $data);
+    $this->load->view('administrator/pengajar_detail', $data);
     $this->load->view('templates_administrator/footer');
   }
 
-  public function tambah_siswa(){
-    $data['kelas'] = $this->siswa_model->tampil_data('kelas')->result();
+  public function tambah_pengajar(){
     $this->load->view('templates_administrator/header');
     $this->load->view('templates_administrator/sidebar');
-    $this->load->view('administrator/siswa_form', $data);
+    $this->load->view('administrator/pengajar_form');
     $this->load->view('templates_administrator/footer');
   }
 
-  public function tambah_siswa_aksi(){
+  public function tambah_pengajar_aksi(){
     $this->_rules();
     if($this->form_validation->run() == FALSE){
-      $this->tambah_siswa();
+      $this->tambah_pengajar();
     }
     else{
-      $nama_lengkap  = $this->input->post('nama_lengkap');
-      $kelas         = $this->input->post('kelas');
+      $id            = $this->input->post('id');
+      $nama_pengajar = $this->input->post('nama_pengajar');
       $alamat        = $this->input->post('alamat');
-      $email         = $this->input->post('email');
-      $telepon       = $this->input->post('telepon');
-      $tempat_lahir  = $this->input->post('tempat_lahir');
-      $tanggal_lahir = $this->input->post('tanggal_lahir');
       $jenis_kelamin = $this->input->post('jenis_kelamin');
+      $email         = $this->input->post('email');
+      $telp          = $this->input->post('telp');
       $photo         = $_FILES['photo'];
       if($photo=''){
       }
@@ -49,8 +46,8 @@ class Siswa extends CI_Controller{
 
         $this->load->library('upload', $config);
         if(!$this->upload->do_upload('photo')){
-          // echo "Gagal Upload!";
-          // die();
+          echo "Gagal Upload!";
+          die();
         }
         else{
           $photo = $this->upload->data('file_name');
@@ -58,59 +55,53 @@ class Siswa extends CI_Controller{
       }
 
       $data = array(
-        'nama_lengkap'  => $nama_lengkap,
-        'kelas'         => $kelas,
+        'id'            => $id,
+        'nama_pengajar' => $nama_pengajar,
         'alamat'        => $alamat,
-        'email'         => $email,
-        'telepon'       => $telepon,
-        'tempat_lahir'  => $tempat_lahir,
-        'tanggal_lahir' => $tanggal_lahir,
         'jenis_kelamin' => $jenis_kelamin,
+        'email'         => $email,
+        'telp'          => $telp,
         'photo'         => $photo,
       );
 
-      $this->siswa_model->insert_data($data, 'siswa');
+      $this->pengajar_model->insert_data($data, 'pengajar');
       $this->session->set_flashdata(
         'pesan',
         '<div class="alert alert-success alert-dismissible fade show" role="alert">
-          Data siswa berhasil ditambahkan
+          Data pengajar berhasil ditambahkan
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>'
       );
-      redirect('administrator/siswa');
+      redirect('administrator/pengajar');
     }
   }
 
   public function update($id){
     $where = array('id' => $id);
-
-    $data['siswa'] = $this->db->query("SELECT * FROM siswa sw WHERE sw.id='$id'")->result();
-    $data['kelas'] = $this->siswa_model->tampil_data('kelas')->result();
-    $data['detail']    = $this->siswa_model->ambil_id_siswa($id);
+    $data['pengajar']     = $this->pengajar_model->edit_data($where, 'pengajar')->result();
+    $data['detail']    = $this->pengajar_model->ambil_id_pengajar($id);
     $this->load->view('templates_administrator/header');
     $this->load->view('templates_administrator/sidebar');
-    $this->load->view('administrator/siswa_update', $data);
+    $this->load->view('administrator/pengajar_update', $data);
     $this->load->view('templates_administrator/footer');
   }
 
-  public function update_siswa_aksi(){
+  public function update_pengajar_aksi(){
     $this->_rules();
 
     if($this->form_validation->run() == FALSE){
-      $this->update();
+      $id = $this->input->post('id');
+      $this->update($id);
     }
     else{
       $id            = $this->input->post('id');
-      $nama_lengkap  = $this->input->post('nama_lengkap');
-      $kelas         = $this->input->post('kelas');
+      $nama_pengajar = $this->input->post('nama_pengajar');
       $alamat        = $this->input->post('alamat');
-      $email         = $this->input->post('email');
-      $telepon       = $this->input->post('telepon');
-      $tempat_lahir  = $this->input->post('tempat_lahir');
-      $tanggal_lahir = $this->input->post('tanggal_lahir');
       $jenis_kelamin = $this->input->post('jenis_kelamin');
+      $email         = $this->input->post('email');
+      $telp          = $this->input->post('telp');
       $photo         = $_FILES['userfile']['name'];
       if($photo){
         $config['upload_path']   = './assets/uploads';
@@ -127,14 +118,12 @@ class Siswa extends CI_Controller{
       }
 
       $data = array(
-        'nama_lengkap'  => $nama_lengkap,
-        'kelas'         => $kelas,
+        'id'            => $id,
+        'nama_pengajar' => $nama_pengajar,
         'alamat'        => $alamat,
+        'jenis_kelamin' => $jenis_kelamin,
         'email'         => $email,
-        'telepon'       => $telepon,
-        'tempat_lahir'  => $tempat_lahir,
-        'tanggal_lahir' => $tanggal_lahir,
-        'jenis_kelamin' => $jenis_kelamin
+        'telp'          => $telp
       );
 
       // print_r($data);
@@ -144,59 +133,50 @@ class Siswa extends CI_Controller{
         'id' => $id,
       );
 
-      $this->siswa_model->update_data($where, $data, 'siswa');
+      $this->pengajar_model->update_data($where, $data, 'pengajar');
       $this->session->set_flashdata(
         'pesan',
         '<div class="alert alert-success alert-dismissible fade show" role="alert">
-          Data siswa berhasil diupdate
+          Data pengajar berhasil diupdate
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>'
       );
-      redirect('administrator/siswa');
+      redirect('administrator/pengajar');
     }
   }
 
   public function delete($id){
-    $where = array('id' => $id);
-    $this->siswa_model->hapus_data($where, 'siswa');
+    $where = array('nidn' => $id);
+    $this->pengajar_model->hapus_data($where, 'pengajar');
     $this->session->set_flashdata(
       'pesan',
       '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        Data siswa berhasil dihapus
+        Data pengajar berhasil dihapus
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>'
     );
-    redirect('administrator/siswa');
+    redirect('administrator/pengajar');
   }
 
   public function _rules(){
-    $this->form_validation->set_rules('nama_lengkap', 'nama_lengkap', 'required', [
-      'required' => 'Nama lengkap wajib diisi!'
-    ]);
-    $this->form_validation->set_rules('kelas', 'kelas', 'required', [
-      'required' => 'Kelas wajib diisi!'
+    $this->form_validation->set_rules('nama_pengajar', 'nama_pengajar', 'required', [
+      'required' => 'Nama pengajar wajib diisi!'
     ]);
     $this->form_validation->set_rules('alamat', 'alamat', 'required', [
       'required' => 'Alamat wajib diisi!'
     ]);
+    $this->form_validation->set_rules('jenis_kelamin', 'jenis_kelamin', 'required', [
+      'required' => 'Jenis kelamin wajib diisi!'
+    ]);
     $this->form_validation->set_rules('email', 'email', 'required', [
       'required' => 'Email wajib diisi!'
     ]);
-    $this->form_validation->set_rules('telepon', 'telepon', 'required', [
+    $this->form_validation->set_rules('telp', 'telp', 'required', [
       'required' => 'Nomor telepon wajib diisi!'
-    ]);
-    $this->form_validation->set_rules('tempat_lahir', 'tempat_lahir', 'required', [
-      'required' => 'Tempat lahir wajib diisi!'
-    ]);
-    $this->form_validation->set_rules('tanggal_lahir', 'tanggal_lahir', 'required', [
-      'required' => 'Tanggal lahir wajib diisi!'
-    ]);
-    $this->form_validation->set_rules('jenis_kelamin', 'jenis_kelamin', 'required', [
-      'required' => 'Jenis kelamin wajib diisi!'
     ]);
   }
 }

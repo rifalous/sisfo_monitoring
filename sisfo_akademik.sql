@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 10, 2023 at 11:52 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Generation Time: Aug 11, 2023 at 04:20 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -309,7 +309,9 @@ CREATE TABLE `pengajar` (
 --
 
 INSERT INTO `pengajar` (`id`, `nama_pengajar`, `alamat`, `jenis_kelamin`, `email`, `telp`, `photo`) VALUES
-(1, 'Dedi Waluyo Wijoyo', 'Bekasi', 'Laki-laki', 'doniwaluyo@contoh.com', '0214565326', 'profil2.jpg');
+(1, 'Dedi Waluyo Wijoyo', 'Bekasi', 'Laki-laki', 'doniwaluyo@contoh.com', '0214565326', 'profil2.jpg'),
+(2, 'Pajeet Patel', 'Prindavan', 'Laki-laki', 'pajeetpatel@gmail.com', '0', 'profil41.jpg'),
+(3, 'Shelvie Neyman', 'Bogor', 'Perempuan', 'shelvieneyman@gmail.com', '0', 'profil91.jpg');
 
 -- --------------------------------------------------------
 
@@ -350,7 +352,7 @@ CREATE TABLE `siswa` (
   `tempat_lahir` varchar(120) NOT NULL,
   `tanggal_lahir` date NOT NULL,
   `jenis_kelamin` varchar(120) NOT NULL,
-  `photo` varchar(255) NOT NULL
+  `photo` varchar(255) DEFAULT 'default.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -358,7 +360,16 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`id`, `nama_lengkap`, `kelas`, `alamat`, `email`, `telepon`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `photo`) VALUES
-(2, 'Rivaldy Fauzan', 'Reguler A1', 'Jl. Pajagalan 1 RT 01 / RW 12 No. 03, Desa Banjaran', 'rifalous@gmail.com', '081223651657', 'Banjaran', '2023-08-11', 'Laki-laki', '2.png');
+(2, 'Rivaldy Fauzan', 'Reguler A1', 'Banjaran', 'rifalous@gmail.com', '081223651657', 'Banjaran', '2023-08-11', 'Laki-laki', 'bfc09a91.jpg'),
+(3, 'Kurnia Halim', 'Reguler A1', 'Ciapus', 'halimkurnia@gmail.com', '0', 'Bandung', '2011-06-20', 'Laki-laki', 'default.jpg'),
+(4, 'Nadine Hasanah', 'Reguler A1', 'Banjaran', 'nadine@gmail.com', '0', 'Bandung', '2011-11-15', 'Perempuan', 'default.jpg'),
+(5, 'Asman Prasetya', 'Reguler A1', 'Sindangpanon', 'asman@gmail.com', '0', 'Bandung', '2012-10-16', 'Laki-laki', 'default.jpg'),
+(6, 'Natalia Yulianti', 'Reguler A1', 'Banjaran', 'nataliyu@gmail.com', '0', 'Bandung', '2011-12-07', 'Laki-laki', 'default.jpg'),
+(7, 'Rahman Natsir', 'Reguler A1', 'Kiangroke', 'rahmann@gmail.com', '0', 'Bandung', '2012-09-15', 'Laki-laki', 'default.jpg'),
+(8, 'Ella Rahmawati', 'Reguler A1', 'Mekarjaya', 'ellarahma@gmail.com', '0', 'Bandung', '2011-03-01', 'Perempuan', 'default.jpg'),
+(9, 'Cecep Hidayat', 'Reguler A1', 'Banjaran', 'cecep@gmail.com', '0', 'Bandung', '2011-05-20', 'Laki-laki', 'default.jpg'),
+(10, 'Adhiarja Wibowo', 'Reguler A1', 'Tarajusari', 'adwi@gmail.com', '0', 'Bandung', '2010-07-28', 'Laki-laki', 'default.jpg'),
+(11, 'Vivi Yolanda', 'Reguler A1', 'Kamasan', 'viviyolan@gmail.com', '0', 'Bandung', '2010-05-03', 'Perempuan', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -601,7 +612,7 @@ ALTER TABLE `jurusan`
 -- AUTO_INCREMENT for table `kelas`
 --
 ALTER TABLE `kelas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `krs`
@@ -625,7 +636,7 @@ ALTER TABLE `matapelajaran`
 -- AUTO_INCREMENT for table `pengajar`
 --
 ALTER TABLE `pengajar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `prodi`
@@ -637,7 +648,7 @@ ALTER TABLE `prodi`
 -- AUTO_INCREMENT for table `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tahun_akademik`

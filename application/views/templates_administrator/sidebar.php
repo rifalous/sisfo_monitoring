@@ -61,6 +61,8 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Sub-Menu Pengaturan:</h6>
             <a class="collapse-item" href="<?= base_url('administrator/users') ?>">User</a>
+            <a class="collapse-item" href="<?= base_url('administrator/kelas') ?>">Kelas</a>
+            <a class="collapse-item" href="<?= base_url('administrator/pengajar') ?>">Pengajar</a>
             <a class="collapse-item" href="<?= base_url('administrator/matapelajaran') ?>">Mata Pelajaran</a>
             <!-- <a class="collapse-item" href="utilities-border.html">Menu</a> -->
           </div>
@@ -275,14 +277,14 @@
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="#">
+                <!-- <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                   Settings
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                   Activity Log
-                </a>
+                </a> -->
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<?= base_url('administrator/auth/logout'); ?>" onclick="return confirm('Yakin akan logout?')">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

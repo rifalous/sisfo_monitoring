@@ -5,7 +5,7 @@
 
   <?= $this->session->flashdata('pesan'); ?>
 
-  <?= anchor('administrator/laporan/print', '<button class="btn btn-primary btn-sm mb-2"><i class="fas fa-print fa-sm"></i> Print Laporan </button>') ?>
+  <?= anchor('administrator/laporan/print', '<button class="btn btn-info btn-sm mb-2"><i class="fas fa-print fa-sm"></i> Print Laporan </button>') ?>
 
   <table class="table table-striped table-bordered table-hover">
     <tr>
